@@ -1,0 +1,21 @@
+/* Author: Kevin Le 
+ *
+ * Filename: styles.css
+ * Purpose: CSS file for some light tweaking of design features
+ * 
+ * Last Modified: 01/10/19 18:17
+ */
+
+.btnSpace {
+  margin-left: 5px;
+}
+
+.side-by-side {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.inputSpaces {
+  margin-bottom: 10px;
+}

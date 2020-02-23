@@ -1,0 +1,38 @@
+CREATE DATABASE assignment;
+USE assignment;
+
+CREATE TABLE `users` (
+  `uid` int(50) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(320) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `balance` double(255,2) DEFAULT '0.00',
+  `admin` BOOLEAN DEFAULT FALSE,
+  `enabled` BOOLEAN DEFAULT TRUE,
+  PRIMARY KEY (`uid`)
+);
+
+INSERT INTO `users` (`name`, `email`, `password`, `balance`, `admin`) VALUES ('admin', 'admin@ebuy.com', '5f4dcc3b5aa765d61d8327deb882cf99', '1000.00', TRUE); #Default password: password
+
+CREATE TABLE `items` (
+  `iid` int(50) unsigned NOT NULL AUTO_INCREMENT,
+  `sellerid` int(50) unsigned NOT NULL,
+  `itemname` varchar(255) NOT NULL,
+  `price` double(255,2) DEFAULT '0.00',
+  `description` varchar(2000) DEFAULT 'Seller has no description',
+  `sold` BOOLEAN DEFAULT FALSE,
+  PRIMARY KEY (`iid`),
+  FOREIGN KEY (`sellerid`) REFERENCES `users` (`uid`)
+);
+
+#Some data to insert
+
+INSERT INTO `users` (`name`, `email`, `password`) VALUES ('william', 'willy@email.com', '32250170a0dca92d53ec9624f336ca24'); #Password: pass123, id = 2
+INSERT INTO `users` (`name`, `email`, `password`) VALUES ('jon', 'jon@email.com', 'b4af804009cb036a4ccdc33431ef9ac9'); #Password: pass1234, id = 3
+
+INSERT INTO `items` (`sellerid`, `itemname`, `price`, `description`) VALUES 
+  ('2', 'iPhone 7 32gb', '300', 'Good condition, no scratches'),
+  ('2', 'Trampoline', '100', 'Disassembled'),
+  ('3', 'Helicopter', '100000', 'Need large enough trailer'),
+  ('3', 'Desktop Computer', '600', 'Selling due to upgrade');
+
